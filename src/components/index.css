@@ -1,0 +1,123 @@
+.container {
+    max-width: 800px;
+    width: 100%;
+    color: #E1EFFC;
+}
+.header {
+    margin-top: 30px;
+}
+.header h2 {
+    font-weight: 900;
+    color: rgb(212, 26, 26)
+}
+.header ul {
+    display: flex;
+    margin-left: auto;
+}
+.header ul li {
+    list-style-type: none;
+    margin-left: 50px;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #F4CA16
+}
+.random-planet {
+    display: flex;
+    margin-top: 30px;
+    background: #4E5D6C;
+    padding: 15px 15px 0; 
+    border-radius: 5px;
+}
+.random-planet .planet-info {
+    display: grid;
+    margin-left: -20px;
+}
+.random-planet h3 {
+    margin-left: 70px;
+    color: #1D3044;
+    font-weight: 700;
+}
+.random-planet ul li {
+    list-style-type: none;
+    border-bottom: 1px solid #6F859A;
+    margin-top: 10px;
+}
+.random-planet ul {
+    margin-left: 50px;
+}
+.item-list {
+    border-radius: 5px;
+}
+.item-list li {
+    color: #318CE7;
+    font-weight: 600;
+}
+.item-list li:hover {
+    cursor: pointer;
+}
+.person-info {
+    display: grid;
+    margin-left: -30px;
+}
+.person-info h4 {
+    margin-top: 10px;
+    margin-left: -10px;
+    color: #004242;
+    font-weight: 600;
+}
+.person-info ul {
+    margin-top: -15px;
+}
+.person-info ul li {
+    margin-bottom: -10px;
+    max-width: 234px;
+}
+.person-info ul li span {
+    border-bottom: 1px solid #6F859A;
+    margin-right: 6px;
+}
+.random-planet .planet-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 15px;
+}
+.person-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    border-radius: 5px;
+}
+.person-details img {
+    padding: 10px;
+    max-height: 170px;
+    min-width: 120px;
+    border-radius: 20px;
+}
+.person-details.card{
+    max-height: 175px;
+    height: 100%;
+}
+.error {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-left: 30%;
+    color: rgb(231, 139, 18);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.error .boom {
+    font-size: 18px;
+}
+.error img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+.error-item {
+    justify-self: center;
+    align-self: center;
+}
+.person-info .list-group {
+    margin-left: -20px;
+}

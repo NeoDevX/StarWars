@@ -1,0 +1,150 @@
+@keyframes double-ring {
+    0% {
+        transform: rotate(0)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+.double-ring div {
+    box-sizing: border-box !important
+}
+
+.double-ring>div {
+    position: absolute;
+    width: 85px;
+    height: 85px;
+    top: 7.5px;
+    left: 7.5px;
+    border-radius: 50%;
+    border: 5px solid #000;
+    border-color: #d52935 transparent #d52935 transparent;
+    animation: double-ring 1s linear infinite;
+}
+
+.double-ring>div:nth-child(2),
+.double-ring>div:nth-child(4) {
+    width: 73px;
+    height: 73px;
+    top: 13.5px;
+    left: 13.5px;
+    animation: double-ring 1s linear infinite reverse;
+}
+
+.double-ring>div:nth-child(2) {
+    border-color: transparent #13df90 transparent #13df90
+}
+
+.double-ring>div:nth-child(3) {
+    border-color: transparent
+}
+
+.double-ring>div:nth-child(3) div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotate(45deg);
+}
+
+.double-ring>div:nth-child(3) div:before,
+.double-ring>div:nth-child(3) div:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    top: -5px;
+    left: 35px;
+    background: #d52935;
+    border-radius: 50%;
+    box-shadow: 0 80px 0 0 #d52935;
+}
+
+.double-ring>div:nth-child(3) div:after {
+    left: -5px;
+    top: 35px;
+    box-shadow: 80px 0 0 0 #d52935;
+}
+
+.double-ring>div:nth-child(4) {
+    border-color: transparent;
+}
+
+.double-ring>div:nth-child(4) div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotate(45deg);
+}
+
+.double-ring>div:nth-child(4) div:before,
+.double-ring>div:nth-child(4) div:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    top: -5px;
+    left: 29px;
+    background: #13df90;
+    border-radius: 50%;
+    box-shadow: 0 68px 0 0 #13df90;
+}
+
+.double-ring>div:nth-child(4) div:after {
+    left: -5px;
+    top: 29px;
+    box-shadow: 68px 0 0 0 #13df90;
+}
+
+.spinner-css {
+    width: 84px;
+    height: 84px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.double-ring {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translateZ(0) scale(0.84);
+    backface-visibility: hidden;
+    transform-origin: 0 0;
+    /* see note above */
+}
+
+.double-ring div {
+    box-sizing: content-box;
+}
+
+/* custom css */
+.spinner-css {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 100px;
+    background-color: #4E5D6C;
+    height: 177px;
+    width: 770px;
+    border-radius: 10px;
+    margin-bottom: -100px;
+}
+
+.double-ring {
+    position: absolute;
+    left: 330px;
+    top: 50px;
+}
+
+.col-md-6 .spinner-css {
+    max-width: 370px;
+    max-height: 148px; 
+}
+
+.col-md-6 .spinner-css .double-ring {
+    margin-left: -180px;
+    margin-top: -15px;
+}
