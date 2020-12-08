@@ -5,7 +5,7 @@ export default class Header extends Component {
         return (
             <div className="header d-flex">
                 <h2>
-                    <a>Star_Wars</a>
+                    <a>Star Wars</a>
                 </h2>
                 <ul>
                     <li>

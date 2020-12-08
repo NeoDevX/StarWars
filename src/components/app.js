@@ -2,74 +2,79 @@ import React, { Component } from 'react';
 import SwapiService from '../services/swapi-service'; 
 import './index.css';
 import Header from './header';
-import RandomPlanet from './random-planet';
-// import PeoplePage from './people-page';
+import RandomPlanet from './random-planet/random-planet';
 import ItemList from './item-list';
-import Error from './error-indicator';
-import PersonDetails from './character-details';
+import { Row } from './row';
+import ItemDetails from './item-details/item-details';
+import { Record } from './item-details/item-view';
+import ErrorBoundry from './error-handler/error-boundry';
 
 export default class App extends Component {
     
     state = {
         hasError: false,
-        selectedPerson: 1,
+        selectedItem: 1
     };
     
     swapiService = new SwapiService();
 
-    componentDidCatch() {
+    onItemSelected = (id) => {
         this.setState({
-            hasError: true
-        });
-    }
-
-    onPersonSelected = (id) => {
-        this.setState({
-            selectedPerson: id
+            selectedItem: id
         });         
     }
 
+
     render() {
 
-        const { hasError } = this.state;
+        const { getPerson,
+            getStarship, 
+            getStarshipImage, 
+            getPersonImage,
+            getAllCharacters 
+        } = this.swapiService;
 
-        if (hasError) {
-            return <Error />;
-        }
+        const itemDetails = (
+            <ItemDetails 
+                itemId={ 1 }
+                getData={ getPerson }
+                getImageUrl={ getPersonImage }>
+
+                <Record field="eyeColor" label="Eye Color"/>
+                <Record field="gender" label="Gender"/>            
+            </ItemDetails>
+        );
+
+        const starshipDetails = (
+            <ItemDetails 
+                itemId={ 5 } 
+                getData={ getStarship }
+                getImageUrl={ getStarshipImage }>    
+
+                <Record field="model" label="Model"/>
+                <Record field="costInCredits" label="Cost"/>
+                <Record field="length" label="Length"/>
+            </ItemDetails>
+        );
+
+        const itemList = (
+            <ItemList 
+                getData={ getAllCharacters }
+                onItemSelected={ () => {} }>
+                    
+                {
+                    ({name, gender}) => `${ name } (${gender})`
+                }
+            </ItemList>
+        );
 
         return (
             <div className="container">
-                <Header />
-                <RandomPlanet />
-                <div className="row mb2 mt-5">
-                    <div className="col-md-6">
-                        <ItemList onItemSelected={ this.onPersonSelected }
-                        getData={ this.swapiService.getAllCharacters }/>
-                    </div>
-                    <div className="col-md-6">
-                        <PersonDetails personId={ this.state.selectedPerson }/>
-                    </div>
-                </div>
-
-                <div className="row mb2 mt-5">
-                    <div className="col-md-6">
-                        <ItemList onItemSelected={ this.onPersonSelected }
-                            getData={ this.swapiService.getAllStarships }/>
-                    </div>
-                    <div className="col-md-6">
-                        <PersonDetails personId={ this.state.selectedPerson }/>
-                    </div>
-                </div>
-
-                <div className="row mb2 mt-5">
-                    <div className="col-md-6">
-                        <ItemList onItemSelected={ this.onPersonSelected }
-                            getData={ this.swapiService.getAllPlanets }/>
-                    </div>
-                    <div className="col-md-6">
-                        <PersonDetails personId={ this.state.selectedPerson }/>
-                    </div>
-                </div>
+                <ErrorBoundry>
+                    <Header />
+                    <RandomPlanet />
+                    <Row left={ itemList } right={ itemList }/>
+                </ErrorBoundry>
             </div>
         );
     }

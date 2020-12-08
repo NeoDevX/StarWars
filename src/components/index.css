@@ -1,5 +1,5 @@
 .container {
-    max-width: 800px;
+    max-width: 1000px;
     width: 100%;
     color: #E1EFFC;
 }
@@ -56,47 +56,49 @@
 .item-list li:hover {
     cursor: pointer;
 }
-.person-info {
+.item-info {
     display: grid;
     margin-left: -30px;
 }
-.person-info h4 {
+.item-info h4 {
     margin-top: 10px;
-    margin-left: -10px;
+    margin-left: -20px;
     color: #004242;
     font-weight: 600;
 }
-.person-info ul {
-    margin-top: -15px;
+.item-info ul {
+    margin-left: -45px;
 }
-.person-info ul li {
-    margin-bottom: -10px;
+.item-info ul li {
+    list-style-type: none;
+    margin-bottom: 5px;
     max-width: 234px;
-}
-.person-info ul li span {
     border-bottom: 1px solid #6F859A;
-    margin-right: 6px;
 }
+
 .random-planet .planet-image {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     border-radius: 15px;
+    margin-bottom: 20px;
 }
-.person-details {
+.random-planet ul {
+    margin-top: -20px;
+}
+.random-planet ul li {
+    font-size: 18px;
+}
+.item-details {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 100%;
     border-radius: 5px;
 }
-.person-details img {
+.item-details img {
     padding: 10px;
-    max-height: 170px;
-    min-width: 120px;
+    max-height: 200px;
+    max-width: 170px;
+    width: 100%;
     border-radius: 20px;
-}
-.person-details.card{
-    max-height: 175px;
-    height: 100%;
 }
 .error {
     display: grid;
@@ -118,6 +120,6 @@
     justify-self: center;
     align-self: center;
 }
-.person-info .list-group {
-    margin-left: -20px;
+#root .error {
+    margin: 50px 0;
 }
