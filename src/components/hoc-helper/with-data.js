@@ -1,28 +1,52 @@
-import React, { Component } from 'react';
+import React, { Component, lazy } from 'react';
 import Spinner from '../spinner/spinner';
 
-export const WithData = (View, getData) => {
+export const WithData = (View) => {
     return class extends Component {
         state = {
-            ItemList: null
-        }
-
-        componentDidMount() {
-            getData()
-                .then((itemList => {
-                    this.setState({ itemList });
-                }));
+            itemList: null,
+            loading: true
         }
         
-        render() {
-            const { itemList } = this.state;
+        componentDidMount() {
+            this.update();
+        }
 
-            if (!itemList) {
-                return <Spinner />
+        componentDidUpdate(prevProps) {
+            if (this.props.getData !== prevProps.getData) {
+                this.update();
+            }
+        }
+        
+        update() {
+            this.setState({ 
+                loading: true
+            });
+
+            this.props.getData()
+                .then(this.onItemsLoaded);
+        }
+
+        onItemsLoaded = (itemList) => {
+            this.setState({ 
+                itemList: itemList,
+                loading: false  
+            });
+        }
+
+        render() {
+            const { itemList, loading } = this.state;
+            const spinner = loading ? <Spinner /> : null;
+            const content = !loading ? <View {...this.props} itemList={ itemList }/> : null;
+            if (!itemList || loading) {
+                return <Spinner />;
             }
             
             return (
-                <View {...this.props} itemList={ itemList }/>
+                <>
+                    { spinner }
+                    { content }
+                </>
             );
         }
     }

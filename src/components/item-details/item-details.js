@@ -8,7 +8,7 @@ export default class ItemDetails extends Component {
     state = {
         item: null,
         image: null,
-        loading: true
+        loading: true,
     };
 
     swapiService = new SwapiService();
@@ -18,17 +18,16 @@ export default class ItemDetails extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.itemId !== this.props.itemId) {
+        if (prevProps.itemId !== this.props.itemId || this.props.getData !== prevProps.getData) {
             this.updateItem();
         }
     }
 
     updateItem() {
         const { itemId, getData } = this.props;
-        const { loading } = this.state;
         
         this.setState({ 
-            loading: !loading 
+            loading: true 
         });
 
         if (!itemId) { return } 
@@ -54,7 +53,9 @@ export default class ItemDetails extends Component {
 
         const spinner = loading ?  <Spinner /> : null;
         const content = !loading ? 
-            <ItemView item={ item } image={ image } childs={this.props.children}/> :
+            <ItemView item={ item } 
+                image={ image } 
+                childs={this.props.children}/> :
             null;
 
         if (loading) {

@@ -1,36 +1,36 @@
 import React, { Component } from 'react';
+import ErrorBoundry from '../components/error-handler/error-boundry';
 import SwapiService from '../services/swapi-service';
 import { Row } from '../components/row';
-import { PlanetsList } from '../components/sw-items/lists';
-import { PlanetDetails } from '../components/sw-items/details';
-import ErrorBoundry from '../components/error-handler/error-boundry';
+import { CharactersList } from '../components/sw-items/lists';
+import { PersonDetails } from '../components/sw-items/details';
 
 
-export default class PlanetsPage extends Component {
+export default class CharactersPage extends Component {
     
     state = {
-        selectedPlanet: 7
+        selectedPerson: 1
     };
 
     swapiService = new SwapiService();
 
-    onPlanetSelected = (id) => {
+    onPersonSelected = (id) => {
         this.setState({
-            selectedPlanet: id
+            selectedPerson: id
         });
     }
 
     render() {
-        const { selectedPlanet } = this.state; 
+        const {selectedPerson} = this.state; 
 
         return (
             <ErrorBoundry>
                 <Row>
                     <ErrorBoundry>
-                        <PlanetsList onItemSelected={this.onPlanetSelected}/>
+                        <CharactersList onItemSelected={this.onPersonSelected}/>
                     </ErrorBoundry>
                     <ErrorBoundry>
-                        <PlanetDetails itemId={selectedPlanet}/>
+                        <PersonDetails itemId={ selectedPerson }/>
                     </ErrorBoundry>
                 </Row>
             </ErrorBoundry>

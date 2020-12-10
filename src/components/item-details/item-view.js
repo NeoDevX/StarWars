@@ -11,7 +11,7 @@ export const Record = ({ item, field, label }) => {
 export const ItemView = ({ item, image, childs }) => {
 
     const { name } = item;
-
+    
     return (
         <>
             <img src={ image } 
@@ -28,4 +28,4 @@ export const ItemView = ({ item, image, childs }) => {
             </div>
         </>
     );
-}
+};
