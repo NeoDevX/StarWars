@@ -16,7 +16,7 @@ export default class LocalAPI {
 
     _starships = [
         {
-            id: 1,
+            id: 2,
             name: "Type-54 TEST",
             model: "t-54",
             costInCredits: "121212",

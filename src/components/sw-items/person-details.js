@@ -13,6 +13,10 @@ const PersonDetails = (props) => {
     );
 }
 
+PersonDetails.defaultProps = {
+    itemId: 1
+}
+
 const methodsToProps = ({ getPersonImage, getPerson }) => {
     return {
         getData: getPerson,

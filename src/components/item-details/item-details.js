@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner/spinner';
 import { ItemView } from './item-view';
 
@@ -11,14 +10,15 @@ export default class ItemDetails extends Component {
         loading: true,
     };
 
-    swapiService = new SwapiService();
-
     componentDidMount() {
         this.updateItem();
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.itemId !== this.props.itemId || this.props.getData !== prevProps.getData) {
+        if (prevProps.itemId !== this.props.itemId || 
+            this.props.getData !== prevProps.getData ||
+            this.props.image !== prevProps.image) 
+        {    
             this.updateItem();
         }
     }
@@ -47,9 +47,6 @@ export default class ItemDetails extends Component {
     render() {
 
         const { item, loading, image } = this.state;
-        if (!item) {
-            return <span>Select item from list</span>
-        }
 
         const spinner = loading ?  <Spinner /> : null;
         const content = !loading ? 

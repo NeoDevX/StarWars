@@ -13,6 +13,10 @@ const StarshipDetails = (props) => {
     );
 }
 
+StarshipDetails.defaultProps = {
+    itemId: 2
+}
+
 const methodsToProps = ({ getStarshipImage, getStarship }) => {
     return {
         getData: getStarship,

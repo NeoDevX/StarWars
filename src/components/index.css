@@ -3,12 +3,18 @@
     width: 100%;
     color: #E1EFFC;
 }
+a:hover{
+    text-decoration: none;
+}
 .header {
     margin-top: 30px;
 }
-.header h2 {
+.header h2 a {
     font-weight: 900;
-    color: rgb(212, 26, 26)
+    color: rgb(212, 26, 26);
+}
+.header h2 a:hover {
+    color: rgba(165, 10, 10, 0.8);    
 }
 .header ul {
     display: flex;
@@ -19,7 +25,7 @@
     margin-left: 50px;
     margin-top: 10px;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
     color: #F4CA16
 }
 .header button {
@@ -55,6 +61,8 @@
 }
 .item-list {
     border-radius: 5px;
+    margin-top: 15px;
+    margin-left: -40px;
 }
 .item-list li {
     color: #318CE7;
@@ -69,7 +77,7 @@
 }
 .item-info h4 {
     margin-top: 10px;
-    margin-left: -20px;
+    margin-left: -8px;
     color: #004242;
     font-weight: 600;
 }
@@ -99,6 +107,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     border-radius: 5px;
+    margin-top: 15px;
 }
 .item-details img {
     padding: 10px;

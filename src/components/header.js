@@ -1,20 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Header = ({ onServiceChange  }) => {
     return (
         <div className="header d-flex">
             <h2>
-                <a>Star Wars</a>
+                <Link to='/'>Star Wars</Link>
             </h2>
             <ul>
                 <li>
-                    <a>Characters</a>
+                    <Link to='/characters/'>Characters</Link>
                 </li>
                 <li>
-                    <a>Planets</a>
+                    <Link to='/planets/'>Planets</Link>
                 </li>
                 <li>
-                    <a>Starships</a>
+                    <Link to='/starships/'>Starships</Link>
                 </li>
                 <button 
                     className="btn btn-success btn-sm"
