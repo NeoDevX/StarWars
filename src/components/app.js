@@ -36,9 +36,7 @@ export default class App extends Component {
             </>
         );
         const status404 = (
-            <>
-                <h1 className="mt-5">Page not Found</h1>
-            </>
+            <h1 className="mt-5">Page not Found</h1>
         );
 
         return (
