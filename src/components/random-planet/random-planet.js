@@ -3,6 +3,7 @@ import Spinner from '../spinner/spinner';
 import ErrorBoundry from '../error-handler/error-boundry';
 import { PlanetView } from './planet-view';
 import PropsTypes from 'prop-types';
+import SwapiService from '../../services/swapi-service'
 
 export default class RandomPlanet extends Component {
 
@@ -13,7 +14,7 @@ export default class RandomPlanet extends Component {
     };
 
     static defaultProps = {
-        updateInterval: 10000
+        updateInterval: 5000
     };
 
     static propTypes = {
@@ -45,9 +46,11 @@ export default class RandomPlanet extends Component {
     }
 
     updatePlanet = () => {
-        const id = Math.floor((Math.random() * 17) + 2);
-        this.swapiService.getPlanet(id)
+        const swapiService = new SwapiService()
+        const id = Math.floor((Math.random() * 15) + 2);
+        swapiService.getPlanet(id)
             .then(this.onPlanetLoaded)
+            .then(this.setState({ loading: false}))
             .catch(this.onError);
     }
 
@@ -70,4 +73,3 @@ export default class RandomPlanet extends Component {
         );
     }
 }
-
