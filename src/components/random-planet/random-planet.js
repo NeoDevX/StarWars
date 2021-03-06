@@ -3,9 +3,9 @@ import Spinner from '../spinner/spinner';
 import ErrorBoundry from '../error-handler/error-boundry';
 import { PlanetView } from './planet-view';
 import PropsTypes from 'prop-types';
-import SwapiService from '../../services/swapi-service'
+import {WithSwapi} from '../hoc-helper/with-swapi'
 
-export default class RandomPlanet extends Component {
+class RandomPlanet extends Component {
 
     state = {
         planet: {},
@@ -46,9 +46,10 @@ export default class RandomPlanet extends Component {
     }
 
     updatePlanet = () => {
-        const swapiService = new SwapiService()
+        const { getPlanet } = this.props
         const id = Math.floor((Math.random() * 15) + 2);
-        swapiService.getPlanet(id)
+        
+        getPlanet(id)
             .then(this.onPlanetLoaded)
             .then(this.setState({ loading: false}))
             .catch(this.onError);
@@ -73,3 +74,7 @@ export default class RandomPlanet extends Component {
         );
     }
 }
+
+const methodsToProps = ({ getPlanet }) => ({getPlanet})
+
+export default WithSwapi(methodsToProps)(RandomPlanet)
