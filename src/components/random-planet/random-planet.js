@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner/spinner';
 import ErrorBoundry from '../error-handler/error-boundry';
 import { PlanetView } from './planet-view';
@@ -20,8 +19,6 @@ export default class RandomPlanet extends Component {
     static propTypes = {
         updateInterval: PropsTypes.number
     }
-
-    swapiService = new SwapiService();
 
     onPlanetLoaded = (planet) => {
         this.setState({ 
